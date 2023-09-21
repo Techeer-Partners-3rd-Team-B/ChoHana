@@ -1,0 +1,13 @@
+.roundBack {
+  width: 80%;
+  min-width: 800px;
+  max-width: 1200px;
+  height: 240px;
+  margin: 0 auto;
+  border-radius: 150px;
+  border: 10px #f5f5dc solid;
+  background-color: #ffb000;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.4);
+}
