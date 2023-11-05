@@ -25,6 +25,7 @@ const Button = styled.span`
 
 const Logo = styled.img`
   height: 25px;
+  margin-right: 4px;
 `;
 
 export default function GithubButton() {
@@ -42,8 +43,7 @@ export default function GithubButton() {
   };
   return (
     <Button onClick={onClick}>
-      <Logo src="/github-mark.svg" />
-      Continue with Github
+      <Logo src="/github-mark.svg" /> Continue with Github
     </Button>
   );
 }

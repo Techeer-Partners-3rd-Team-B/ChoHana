@@ -9,6 +9,7 @@ import { auth } from "./firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
 import {
+  Error,
   Form,
   Input,
   Switcher,
