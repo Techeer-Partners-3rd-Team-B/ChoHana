@@ -96,10 +96,7 @@ export default function PostTweetForm() {
       if (file) {
         // 파일첨부가 되었다면 파일 위치에 대한 위치를 받아야함
         // 이미지의 이름은 이미지가 업로드 된 트윗의 ID
-        const locationRef = ref(
-          storage,
-          `tweets/${user.uid}-${user.displayName}/${doc.id}`
-        );
+        const locationRef = ref(storage, `tweets/${user.uid}/${doc.id}`);
         const result = await uploadBytes(locationRef, file);
         const url = await getDownloadURL(result.ref);
         await updateDoc(doc, { photo: url });
