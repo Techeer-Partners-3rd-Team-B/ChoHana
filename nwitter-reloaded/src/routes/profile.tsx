@@ -68,13 +68,7 @@ export default function Profile() {
   const [avatar, setAvatar] = useState(user?.photoURL);
   const [name, setName] = useState(user?.displayName);
   const [tweets, setTweets] = useState<ITweet[]>([]);
-  const tweetQuery = query(
-    // 현재 유저의 트윗 쿼리
-    collection(db, "tweets"),
-    where("userId", "==", user?.uid), // 파이어베이스는 이 필터 제공안함
-    orderBy("createdAt", "desc"),
-    limit(25)
-  );
+
   // 아바타 이미지 바꾸기
   const onAvatarChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { files } = e.target;
@@ -92,12 +86,12 @@ export default function Profile() {
   };
   // 현재 유저의 트윗만 가져오는 기능
   const fetchTweets = async () => {
-    // const tweetQuery = query(
-    //   collection(db, "tweets"),
-    //   where("userId", "==", user?.uid), // 파이어베이스는 이 필터 제공안함
-    //   orderBy("createdAt", "desc"),
-    //   limit(25)
-    // );
+    const tweetQuery = query(
+      collection(db, "tweets"),
+      where("userId", "==", user?.uid), // 파이어베이스는 이 필터 제공안함
+      orderBy("createdAt", "desc"),
+      limit(25)
+    );
     const snapshot = await getDocs(tweetQuery);
     const tweets = snapshot.docs.map((doc) => {
       const { tweet, createdAt, userId, username, photo } = doc.data();
@@ -108,7 +102,7 @@ export default function Profile() {
   useEffect(() => {
     fetchTweets();
   }, []);
-  // 이름 바꾸는 함수 TODO: 이전의 트윗도 현재 닉네임 변경하기
+  // Challenge🌈🌈 이름 바꾸는 함수
   const onNameChange = async () => {
     const name = await prompt("새 username을 입력해주세요.");
     if (!user) return;
@@ -116,7 +110,7 @@ export default function Profile() {
     await updateProfile(user, {
       displayName: name,
     });
-    // TODO: 이전의 트윗들도 username 변경시키기
+    // TODO💥💥: 이전의 트윗들도 username 변경시키기
   };
 
   return (

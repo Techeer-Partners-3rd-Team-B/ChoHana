@@ -76,7 +76,7 @@ export default function Tweet({ username, photo, tweet, userId, id }: ITweet) {
     } finally {
     }
   };
-  // 챌린지:::: 수정 (edit) 기능 만들기 - TODO: 프롬프트 말고 모달로
+  // Challenge🌈🌈 수정 (edit) 기능 만들기 - TODO💥💥 프롬프트 말고 모달로
   const onEdit = async () => {
     const ok = confirm("Are you sure you want to edit this tweet?");
     if (!ok || user?.uid !== userId) return;
